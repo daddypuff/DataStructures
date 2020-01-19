@@ -140,6 +140,7 @@ void insert_index(int arr[], int loc, int num){
         }
         arr[loc]=num;
         }
+//*Dedicated Function for Traversing*//
 void traverse(int arr[]){
     printf("{ " );
     for(i=0;i<len;i++)
