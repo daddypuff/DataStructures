@@ -10,9 +10,10 @@ void swap(int *, int *);
 void selection_sort(int arr[]);
 void traverse(int arr[]);
 void insert_index(int arr[], int loc, int num);
+//*#*//
 
 int main(){
-    int search, addnum, subchoice, choice, loop=0, location;
+    int search, addnum, subchoice, choice, location;
     bool found=false;
 
     printf("Enter the number of terms you want in the array- ");
@@ -22,8 +23,9 @@ int main(){
     for(i=0;i<len;i++){scanf("%d", &array[i]);}
     printf("\n\n");
     traverse(array);
+    printf("\n\n");
 //*Reusable Program Loop*//
-        while(loop<1){
+        while(true){
         printf("\nEnter the number as per the desired operation to be performed on the given array:\n1-Inserting\n2-Delete\n3-Linear Search\n4-Selection Sort\n5-Traverse\n0-Exit\n ");
         scanf("%d", &choice);
 //*Choice for Loop*//
@@ -49,8 +51,15 @@ int main(){
             case 3:
                 printf("Enter the location: ");
                 scanf("%d", &location);
+                if(location>len-1 || location<0){
+                        printf("Element not defined!\n");
+                        traverse(array);
+                        printf("\n");
+                        break;
+                }
                 printf("Enter the number to be Added: ");
                 scanf("%d", &addnum);
+
                 insert_index(array, location, addnum);
                 break;
 
@@ -58,7 +67,7 @@ int main(){
             break;
 
         case 2:
-            printf("Type of Insertion:\n1- Delete First Element\n2- Delete last Element\n3- Delete at a Location\n");
+            printf("Type of Deletion:\n1- Delete First Element\n2- Delete last Element\n3- Delete at a Location\n");
              scanf("%d", &subchoice);
 //*Sub-Loop-2*//
             switch(subchoice)
@@ -75,6 +84,12 @@ int main(){
             case 3:
                 printf("Enter the index to be deleted: ");
                 scanf("%d", &location);
+                if(location>len-1 || location<0){
+                        printf("Element not defined!\n");
+                        traverse(array);
+                        printf("\n");
+                        break;
+                }
                 delete_index(array, location);
                 traverse(array);
                 break;
@@ -109,9 +124,7 @@ int main(){
             printf("\n");
             traverse(array);
             printf("\n");
-
-
-break;
+            break;
 
         case 0:
             exit(0);
@@ -124,11 +137,11 @@ break;
 
 
 //*Swapping for Sort*//
-void swap(int *p, int*q){
+void swap(int *ax, int*bx){
     int temp;
-    temp = *p;
-    *p = *q;
-    *q = temp;
+    temp = *ax;
+    *ax = *bx;
+    *bx = temp;
 }
 
 //*Function for Inserting*//
@@ -140,13 +153,17 @@ void insert_index(int arr[], int loc, int num){
         }
         arr[loc]=num;
         }
-//*Dedicated Function for Traversing*//
+
+
+//*Specific function for Traversing*//
 void traverse(int arr[]){
     printf("{ " );
     for(i=0;i<len;i++)
         printf("%d ", arr[i]);
     printf("}");
 }
+
+
 //*Function for Selection Sort*//
 void selection_sort(int arr[]){
     int min, i, j;
@@ -155,7 +172,7 @@ void selection_sort(int arr[]){
         for(j=i+1;j<len;j++){
             if(arr[j] < arr[min]){min=j;}
             }
-            swap(&arr[min],&arr[i]);
+            swap(&arr[i],&arr[min]);
 
     }
 }
