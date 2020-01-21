@@ -39,8 +39,8 @@ int main(){
     for(i=0;i<mrows;i++){
         for(j=0;j<mcolumn;j++){
             if(matrix[i][j]!=0){
-                array[x][0]= i;
-                array[x][1]=j;
+                array[x][0]= i+1;
+                array[x][1]=j+1;
                 array[x][2]=matrix[i][j];
                 x++;
             }
