@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -15,6 +16,11 @@ int main(){
 
      printf("Enter number of columns in matrix: ");
      scanf("%d", &mcolumn);
+     
+     if(mrows==0||mcolumn==0){
+            printf("Invalid Inputs!");
+            exit(0);
+     }
 
      printf("Enter Elements of the Matrix- ");
 //*Scanning Matrix And determining number of Non Zero Elements  *//
