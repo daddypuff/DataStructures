@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 int i, j;
+bool allzero=true;
 
 int main(){
 
@@ -20,13 +21,20 @@ int main(){
      for(i=0;i<mrows;i++){
         for(j=0;j<mcolumn;j++){
             scanf("%d", &matrix[i][j]);
-            if(matrix[i][j]!=0){nonzero++;}
+            if(matrix[i][j]!=0){
+                 nonzero++;
+                 allzero=false;
+            }
         }
             }
 //*Checking if a sparse Matrix*//
      if(nonzero>mrows*mcolumn/4){
         printf("This cannot be considered and/or transformed into a scarce Matrix!!!");
         exit(0);
+     }
+     if(allzero=true){
+          printf("As all elements of this array are 0, sparse matrix cant be formed!");
+          exit(0);
      }
 //*Else*//
      arows = nonzero+1;
